@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Project identity -->
+    <groupId>com.pavz.testing</groupId>
+    <artifactId>sdet-labs</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Java version -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+    </properties>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- ✅ JUnit 5 for unit testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ✅ Selenium for browser automation -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.21.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ✅ WebDriverManager to auto-manage ChromeDriver -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.8.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Plugins -->
+    <build>
+        <plugins>
+            <!-- Surefire runs tests with mvn test -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                    <!-- run headless by default -->
+                    <systemPropertyVariables>
+                        <selenium.headless>true</selenium.headless>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
